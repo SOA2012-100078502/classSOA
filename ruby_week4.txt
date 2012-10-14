@@ -1,0 +1,463 @@
+
+	* String :
+	* 
+		* ' ' : single quotes represents a plain, static string
+		* "" : using double quotes allows us to insert variables such as my #{name}
+
+	* %q{} , %Q{} :string寫法
+	* 
+		* %q{}=''
+		* %Q{}=""
+
+
+
+	* .reverse:字元順序顛倒
+	* 
+		* "Wendell".-reverse
+		* => "lledneW"
+
+	* .lines.to_a/i/s.reverse : 行順序顛倒
+	* 
+		* .lines / .bytes / .chars
+		* 
+poem.lines-.to_a.reve-rse
+=> ["More still did I want to eat it.
+", "Planting our flag on Halley's comet,
+", "But when I saw it on television,
+", "And my honeydew has gone to the moon.
+", "My honeydew has flown from my hand
+"]
+
+
+
+
+	* .length:字元長度, name={...}中的物件數目
+	* 
+		* 
+"Wendell".-length
+=> 7
+
+
+	* "name"*number, ex. *5: "name"倍數出現
+	* 
+		* 
+"Wendell"*-5
+=> "WendellWendellWendellWendellWendell"
+
+
+	* types of things
+	* 
+		* 
+			* to_s converts things to strings.
+			* to_i converts things to integers (numbers.)
+			* to_a converts things to arrays.
+ex.
+
+40.reverse => error
+
+"40".reverse => success
+
+40.to_s.reverse => success
+
+
+
+	* arrays:
+	* 
+		* []= square brackets
+		* [things stored in order], ex [12, 47, 35]
+		* [12,47,35].reverse => [35,47,12]
+		* 
+
+		* .max : 顯示最大值
+		* 
+			* [12,47,35].max =>
+
+		* 
+
+		* Setting Variable for arrays
+		* 
+			* "var_name"=[...]
+			* ex. >ticket=[12-,4735]
+
+		* 
+=> [12, 4735]
+>ticket
+=> [12, 4735]
+Success!
+
+		* .sort :照大小排列
+		* 
+			* 
+ticket=[5,-8,2,4,7]
+=> [5, 8, 2, 4, 7]
+> ticket.sor-t
+=> [2, 4, 5, 7, 8]
+
+
+
+	* print var_name :顯示內容
+	* 
+		* poem="...."
+		* 
+print poem
+=> "My toast has flown from my hand
+And my toast has gone to the moon.
+But when I saw it on television,
+Planting our flag on Halley's comet,
+More still did I want to eat it."
+Success!
+
+
+	* print['newname']='oldname' : 字詞代換
+	* 
+		* 
+poem['toas-t']='honey-dew'
+=> "honeydew"
+Success!
+> print poem
+=> "My honeydew has flown from my hand
+And my toast has gone to the moon.
+But when I saw it on television,
+Planting our flag on Halley's comet,
+More still did I want to eat it."
+
+
+	* .join :合併成字串
+	* 
+		* 
+print poem.-lines.to_a-.reverse.j-oin
+More still did I want to eat it.
+Planting our flag on Halley's comet,
+But when I saw it on television,
+And my honeydew has gone to the moon.
+My honeydew has flown from my hand
+Success!
+
+
+	* .delete : 刪除(部分)字串
+	* 
+		* "hello".delete "l","lo"        #=> "heo"
+"hello".delete "lo" #=> "he"
+"hello".delete "aeiou", "^e"   #=> "hell"
+"hello".delete "ej-m"          #=> "ho"
+
+
+	* symbol
+	* 
+		* : (colon)
+		* : words
+		* ex. :splendid, :quite_good,
+		* Symbols are cheaper than strings (in terms of computer memory.)
+		* If you use a word over and over in your program, use a symbol
+		* 
+
+
+	* hash {} =雜燴 (Also known as: an empty dictionary.)
+	* 
+		* books = {}
+		* books["abc"]= :good
+		* books["xyz"]=:cool
+		* 
+
+		* books
+		* 
+			* =>{"abc"=>:splendid, "xyz"=>:cool}
+
+		* 
+books.valu-es
+=> [:splendid, :cool]
+
+		* books.leng-th
+		* 
+			* => 2
+
+		* books["abc-"]
+		* 
+			* => :cool
+
+
+	* Blocks : 接在命令後的code集合
+	* 
+		* Chunks of code which can be tacked on to many of Ruby's methods. Here's the code you used to build a scorecard:
+		* Blocks are always attached to methods.
+		* ex.
+		* 
+			* 
+5.times {prin-t"Odelay!"-}
+=> "Odelay!Odelay!Odelay!Odelay!Odelay!"
+
+(等於"Odelay".*-5
+=> "OdelayOdelayOdelayOdelayOdelay")
+
+
+
+	* Dir.entries "" : 進入目錄
+	* 
+		* 
+Dir.entrie-s "/"
+=> [".", "..", "Home", "Libraries", "MouseHole", "Programs", "Tutorials", "comics.txt"]
+
+	* Dir["/*.tx-t"]:顯示"/"資料夾內的全部txt文件
+	* 
+		* 
+Dir["/*.tx-t"]
+=> ["/comics.txt"]
+
+
+	* File.read("path") : 顯示檔案內容
+	* 
+		* 
+File.read(-"/comics.t-xt")
+=> "Achewood: http://achewood.com/
+Dinosaur Comics: http://qwantz.com/
+Perry Bible Fellowship: http://cheston.com/pbf/archive.html
+Get Your War On: http://mnftiu.cc/
+
+		* 
+print File.-read("/com-ics.txt")
+=> "Achewood: http://achewood.com/
+Dinosaur Comics: http://qwantz.com/
+Perry Bible Fellowship: http://cheston.com/pbf/archive.html
+Get Your War On: http://mnftiu.cc/
+
+
+	* FileUtils.cp ( 'old path', 'new path') :複製檔案
+	* 
+		* 
+FileUtils.-cp('/comic-s.txt', '/Hom-e/comics.t-xt')
+=> nil
+Success!
+Dir["Home/-*.txt"]
+=> ["/Home/comics.txt"]
+
+
+	* File.open("path","a") do |f| :修改檔案
+	* 
+		* use end to close
+		* f << 要新增的內容
+		* 
+> File.open(-"/Home/com-ics.txt", "a") do |f|
+.. f << "Cat and Girl:- http:-//catandgi-rl.com/"
+.. end
+=> #<File:/Home/comics.txt (closed)>
+
+print File.-read("/Hom-e/comics.t-xt")
+=> "Achewood: http://achewood.com/
+Dinosaur Comics: http://qwantz.com/
+Perry Bible Fellowship: http://cheston.com/pbf/archive.html
+Get Your War On: http://mnftiu.cc/
+Cat and Girl: http://catandgirl.com/"
+
+
+	* .mtime : 顯示新增檔案的時間
+	* 
+		* 
+File.mtime-("/Home/co-mics.txt")-
+=> 2012-10-06 12:47:02 +0000
+Success!
+
+		* .hour : 只顯示小時
+		* 
+			* 
+File.mtime-("/Home/co-mics.txt")-.hour
+=> 12
+Success!
+
+
+
+	* time.now :顯示幕前時間
+	* 
+		* time.now - 2.weeks :兩週前的現在時間
+		* 
+Time.now - 2.wee-ks
+=> 2012-09-22 16:19:21 +0000
+Success!
+
+
+	* def method : 定義方法
+	* 
+		* def load_-comics( path )
+comic-s = {}
+File.-foreach(pa-th) do |line-|
+name,- url = line.-split(': ')
+comic-s[name] = url.s-trip
+end
+comic-s
+end
+		* 
+comics = load_-comics('/c-omics.txt'-)
+=> {"Achewood"=>"http://achewood.com/", "Dinosaur Comics"=>"http://qwantz.com/", "Perry Bible Fellowship"=>"http://cheston.com/pbf/archive.html", "Get Your War On"=>"http://mnftiu.cc/"}
+>
+
+
+	* 
+split(file_name) → arrayclick to toggle source
+Splits the given string into a directory and a file component and returns them in a two-element array.
+See also File::dirname and File::basename.
+
+
+
+	* 
+		* split is a method for strings, which breaks the string up into an array. An axe is laid on the colon and the line is chopped in half, giving us the urland name for each comic.
+
+	* File.foreach
+	* 
+		* is a method which opens a file and hands each line to the block. The line variable inside the do...end block took turns with each line in the file.
+
+	* strip
+	* 
+		* removes extra spaces around the name. Just in case.
+
+
+
+
+	* require 'filename' : 呼叫擴充
+	* 
+		* 
+require 'popu-p'
+=> true
+Success!
+
+		* 
+require(name) → true or false
+Loads the given name, returning true if successful and false if the feature is already loaded.
+
+
+
+	* Dir["/Libraries/*"] :顯示擴充資料夾
+	* 
+		* 
+Dir["/Libr-aries/*"]
+call Popup.goto and pass in a url
+
+
+
+
+
+	* Popup.make {} or Popup.make do :製作網頁
+	* 
+		* h1 : 網頁的最大標題
+		* p : 段落
+		* list do 列出段落(接在下面)
+		* link "name", "url" :超連結
+		* .each : 列出全部
+		* 
+			* Popup.make- do
+h1 "Thin-gs To Do"
+list do
+p "Try out Ruby"-
+p "Ride- a tiger-"
+p "(dow-n River- Euphr-ates)"
+end
+end
+
+			* Popup.make- {
+h1 "My Links-"
+link "Go to Ruby"-, "http-://ruby-la-ng.org/" }
+			* Popup.make- do
+h1 "Comi-cs on the Web"
+list do
+comic-s.each do |name-, url|
+link name,- url
+end
+end
+end
+
+
+	* .new :　在給定的class種類下創造一個物件（ Hash, Array,String.）
+	* 
+		* 
+entry = BlogE-ntry.new
+=> #<BlogEntry:0x458aa350>
+Success!
+
+		* 
+Hash.new
+=> {}
+Success!
+
+
+Think "class" as in "working class" — a specific group of objects which are similar, have the same jobs, the same shirts.
+
+
+
+
+	* class classname : 創造新class　（Class已存在會打開現有class）
+	* 
+		* 
+class BlogE-ntry
+.. attr_acces-sor :titl-e, :time-, :full-text, :mood-
+.. end
+attr_accessor. There are many attribute methods like this which add little settings to classes. These attributes are just variables attached to a class.
+
+
+	* attr_accessor ：對給定的class增加屬性
+	* 
+		* attr_acces-sor :titl-e, :time-, :full-text, :mood-
+		* 
+entry.time- = Time.-now
+2012-10-06 15:19:16 +0000
+Success!
+> entry.mood- = :sick-
+:sick
+> entry.full-text = "I can't- belie-ve Mt. Hood was stole-n! I am speec-hless! It was stole-n by a giraf-fe who drove- away in his Cadil-lac Sevil-le very nonch-alant!!"
+"I can't believe Mt. Hood was stolen! I am speechless! It was stolen by a giraffe who drove away in his Cadillac Seville very nonchalant!!"
+
+> entry　＃顯示所有entry的屬性
+#<BlogEntry:0x7206411c @time=2012-10-06 15:19:39 +0000, @title="Today Mt. Hood Was Stolen!", @fulltext="I can't believe Mt. Hood was stolen! I am speechless! It was stolen by a giraffe who drove away in his Cadillac Seville very nonchalant!!", @mood=:sick>
+
+
+	* def initialize( ... ) :定義初始化
+	* 
+		* @ :在本class中才能被呼叫的變數名
+		* class BlogEntry
+  def initialize( title, mood, fulltext )
+    @time = Time.now
+    @title, @mood, @fulltext = title, mood, fulltext
+  end
+end
+
+		* 
+entry2 = BlogE-ntry.new("-I Left my Hoodi-e on the Mount-ain!", :conf-used, "I am never- going- back to that mount-ain and I hope a giraf-fe steal-s it.")-
+#<BlogEntry:0x13168ddd @title="I Left my Hoodie on the Mountain!", @time=2012-10-06 15:30:59 +0000, @fulltext="I am never going back to that mountain and I hope a giraffe steals it.", @mood=:confused>
+Success!
+
+
+	* 
+		* Classes. Everything in Ruby is some kind of object. Classes explain objects. How a certain object works. For example, you made a few blog entry objects and these objects are explained in the BlogEntry class. In other words: you call them BlogEntry objects.
+		* Accessors are variables attached to an object which can be used outside the object. (entry.time = Time.now)
+		* Instance variables are the same variables you're using for accessors when inside the object. Like in a method definition. (@time = Time.now)
+
+	* .sort_by {....} :有條件篩選
+	* 
+		* sort_by {| obj | block } → array
+		* 
+			* %w{ apple pear fig }.sort_by {|word| word.length}
+              #=> ["fig", "pear", "apple"]
+
+
+
+	* 
+		* blog.sort_-by { |entr-y| entry-.time }
+		* blog.sort_by { |entry| entry.time }
+		* 加上.reverse
+		* 
+			* blog.sort_by { |entry| entry.time }.reverse
+
+
+	* .find_all {...} :在給定class中依條件尋找全部符合項目
+	* 
+		* blog.find_all { |entry| entry.fulltext.match(/cadillac/i) }
+
+	* 
+ary << obj → aryclick to toggle source
+Append—Pushes the given object on to the end of this array. This expression returns the array itself, so several appends may be chained together.
+[ 1, 2 ] << "c" << "d" << [ 3, 4 ]
+        #=>  [ 1, 2, "c", "d", [ 3, 4 ] ]
+
+	* 
+
+	* 
+
+
+
