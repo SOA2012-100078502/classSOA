@@ -1,0 +1,92 @@
+Ruby_week5
+
+Getting Start(for "saasbook-vm-0.9.0.vdi"):
+	option1:download "saasbook-vm-0.9.1.vdi"
+		=>cd to "myrottenpotatoes"
+		=>=>run rails server
+	option2:download "rottenpotatoes.tar"
+		=>then copy folder "myrottenpotatoes" to "Documents"
+		=>cd to "myrottenpotatoes"
+		=>then type in "bundle install"
+		=>run rails server
+
+Create new dir:
+	=>cd "Documents"
+	=>rails new myrottenpotatoes -T # rails new=create new folder "XXX"
+	=>prompt show message "your bundle is complete"
+
+dir structure:
+	1.Gemfile list of Ruby gems (libraries) this app uses (Chapter?3) 
+	2.Rakefile commands to automate maintenance and deployment (Chapter?12) 
+	3.app your application ??
+		app/models model code ??
+		app/controllers controller code ??
+		app/views view templates ????
+		app/views/layouts page templates used by all views in the app (see text) ??
+		app/helpers helper methods to streamline view templates
+??		app/assets static assets (JavaScript, images, stylesheets)
+	4.config basic configuration information ??
+		config/environments settings for running in development vs. production ??
+		config/database.yml database configuration for development vs. production ??
+		config/routes.rb mappings of URIs to controller actions
+	5.db files describing the database schema ??
+		db/development.sqlite3 Data storage for SQLite development database ??
+		db/test.sqlite3 Database used for running tests ??
+		db/migrate/ Migrations (descriptions of changes to database schema)
+	6.doc generated documentation
+		lib additional app code shared among M, V, C 
+		log log files 
+		public error pages served by Web server 
+		script development tools, not part of app 
+		tmp temporary data maintained at runtime
+
+edit "Gemfile" :http://pastebin.com/AGMAxaag
+	=>
+	# use Haml for templates
+	gem 'haml'
+	# use Ruby debugger
+	group :development, :test do
+  	 gem 'ruby-debug19'
+	end
+
+	=>This change does two things. 
+	First, it specifies that we will use the Haml templating system rather than the built-in erb. 
+	Second, it specifies that we want to use the interactive debugger ruby-debug19 during development and testing,
+	but not in production.
+
+after edit "Gemfile" :
+	=>bundle install --without production
+
+Start server:
+	=>rails server
+	=>surf the site "http://localhost:300/movies"
+
+check error message 
+	=>log/development.log
+
+edit routes: http://pastebin.com/piLDY4eM
+	=>edit "config/routes.rb"
+	=>
+	Myrottenpotatoes::Application.routes.draw do
+  		resources :movies
+  		root :to => redirect('/movies')
+	end
+	
+	=>delete "public/index.html" if exists
+	
+	=>rake routes
+	=>surf the site "http://localhost:300/movies"
+	=>see a different error: uninitialized constant MoviesController.
+	=>this means route is working correctly
+
+deal with error of "uninitialized constant MoviesController"
+	=>rails g controller movies #generate a movies controller
+		(under apps/controllers dir)	
+	=>edit "movies_controller.rb"
+	=>
+	def show
+	edn
+
+	=>surf the site "http://localhost:300/movies"
+	=>see a different error: LoadError in MoviesController#index
+
